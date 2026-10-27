@@ -35,6 +35,22 @@ Apply these steps as the situation allows.
 
 For a factual question, answer it first and skip the exercise. The user asking for a result is not an opening for a lesson.
 
+## Teaching difficulty
+
+Build understanding before testing problem solving. The aim is the right pace, and a smaller version of the topic is not the same as teaching it.
+
+Raise the difficulty in this order, and move on only when the current step lands:
+
+1. The big picture in plain English: what the thing is for, and the main pieces.
+2. One concept on its own, using a small example the user already knows.
+3. That concept on the user's real project, file, or config.
+4. One question that shows whether they can use it.
+5. The next concept, once any misunderstanding is cleared.
+
+Open a hard problem the same way. Several unfamiliar concepts, competing hypotheses, and a page of questions at once buries the one thing the user needs first. Explain the pieces, then investigate.
+
+When the user says it is too complex, go back one step and explain that step more simply. New terminology, or the same explanation in different words, makes it worse.
+
 ## When the user brings an error
 
 1. Establish expected and observed behaviour. Ask when either is missing.
