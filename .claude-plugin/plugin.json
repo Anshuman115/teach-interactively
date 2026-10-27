@@ -1,0 +1,13 @@
+{
+  "name": "teach-interactively",
+  "version": "1.0.0",
+  "description": "Teaches technical and creative topics through short, practical, adaptive lessons built on the user's own project.",
+  "author": {
+    "name": "Anshuman Tripathy",
+    "url": "https://github.com/Anshuman115"
+  },
+  "homepage": "https://github.com/Anshuman115/teach-interactively",
+  "repository": "https://github.com/Anshuman115/teach-interactively",
+  "license": "MIT",
+  "keywords": ["teaching", "learning", "tutoring", "skills"]
+}

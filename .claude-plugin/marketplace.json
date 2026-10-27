@@ -1,0 +1,15 @@
+{
+  "name": "teach-interactively",
+  "description": "A concise, adaptive teaching skill for AI coding agents.",
+  "owner": {
+    "name": "Anshuman Tripathy",
+    "url": "https://github.com/Anshuman115"
+  },
+  "plugins": [
+    {
+      "name": "teach-interactively",
+      "description": "Teaches technical and creative topics through short, practical, adaptive lessons built on the user's own project.",
+      "source": "./"
+    }
+  ]
+}
