@@ -1,27 +1,18 @@
 # Teach Interactively
 
-A portable teaching skill for AI coding agents. The agent teaches a topic from your own project, builds the mental model before the details, sets short exercises, and adapts to your answers instead of dumping information.
+A lightweight question-and-answer teaching skill for AI coding agents. Ask it to explain a concept from your own repo, your architecture, a library you are evaluating, or an error whose cause you want to understand. It gives you the mental model first, ties it to your real files, and checks your understanding with short, realistic questions instead of a lecture.
 
-## Invocation
+Author: Anshuman Tripathy ([@Anshuman115](https://github.com/Anshuman115)).
 
-```text
-Use teach-interactively to explain [topic]. Use my real project where possible,
-explain the mental model first, keep it concise, and give me one practical example.
-```
+## What it does
 
-Short form:
+- Answers a concept question in the first paragraph, then goes deeper only if you want it.
+- Builds the mental model before the details, and keeps one concept in flight at a time.
+- Uses your project, config, logs, or error as the example. It does not invent environment details.
+- Adapts to your answers and skips what you have already shown you understand.
+- On an error, works from expected vs observed behaviour to a single read-only diagnostic, and explains what each possible result would mean before proposing a fix.
 
-```text
-Use teach-interactively for this.
-```
-
-Other triggers it is written for:
-
-```text
-Teach me how this error works; don't just fix it.
-Help me understand this code.
-Use my learning style for this.
-```
+It does not run commands, edit files, deploy, or change infrastructure without permission, and it never asks for secrets, only redacted output.
 
 ## Install
 
@@ -34,21 +25,74 @@ claude plugin install teach-interactively@teach-interactively
 
 The repository is private, so the machine needs GitHub credentials that `git` can use.
 
-### Copy or symlink
+### Symlink into a skill root
 
-Copy `skills/teach-interactively/` into any directory your agent scans for skills. On this machine the agent roots are `~/.omp/agent/skills`, `~/.agents/skills`, and `~/.claude/skills`.
+Symlinks keep one copy in this repository and make every agent read it.
 
 ```bash
-ln -s "$PWD/skills/teach-interactively" ~/.agents/skills/teach-interactively
+git clone git@github.com:Anshuman115/teach-interactively.git
+ln -s "$PWD/teach-interactively/skills/teach-interactively" ~/.agents/skills/teach-interactively
+```
+
+`~/.agents/skills` is the cross-runtime alias that omp, Codex, Copilot CLI and Gemini CLI read. Claude Code also reads `~/.claude/skills`, and omp reads `~/.omp/agent/skills`.
+
+### Copy
+
+```bash
+cp -R skills/teach-interactively ~/.agents/skills/
 ```
 
 ### No skill support
 
 Add `skills/teach-interactively/SKILL.md` to the agent's project instructions, or ask it to read that file before the lesson.
 
-## Scope
+## Usage
 
-The skill grants no file, terminal, or infrastructure access. The agent still needs the relevant context and permissions, and it must ask before running commands, editing files, deploying, or changing infrastructure.
+```text
+Use teach-interactively to explain [concept]. Use my real project where possible,
+explain the mental model first, keep it concise, and give me one practical example.
+```
+
+```text
+Teach me how this error works; don't just fix it.
+Help me understand this code.
+Use my learning style for this.
+```
+
+Short form:
+
+```text
+Use teach-interactively for this.
+```
+
+A short exchange, trimmed:
+
+```text
+You: teach-interactively, why does the webhook handler see no tenant?
+It:  Goal: you will be able to name the layer that drops the tenant.
+     Model: the request carries tenant metadata, the consumer resolves it from
+     config, and anything unresolved falls back to the default database.
+     Question: given that, which of the two is more likely to be empty?
+You: the config lookup
+It:  Right. The line to check is `No tenant could be resolved`. If it appears
+     before the first query, the metadata arrived intact and the lookup is the gap.
+```
+
+## How it behaves
+
+Each reply aims at a goal, a model, an example, a question, feedback, and the next step, in whatever amount the question deserves. A factual question gets the answer first and no exercise.
+
+For multi-session learning, ask it to keep notes. It only claims remembered progress when those notes or the conversation are in context.
+
+## Layout
+
+```text
+.claude-plugin/marketplace.json   plugin marketplace entry
+.claude-plugin/plugin.json        plugin metadata
+skills/teach-interactively/SKILL.md
+```
+
+`skills/` stays plural because that is the directory plugin discovery reads.
 
 ## Licence
 

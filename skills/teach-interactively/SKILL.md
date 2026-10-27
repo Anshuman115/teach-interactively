@@ -1,11 +1,11 @@
 ---
 name: teach-interactively
-description: Use when the user wants to learn, understand, debug, or investigate something rather than only receive a finished answer.
+description: Use for lightweight question-and-answer teaching of a concept: your architecture, your repo, a library, or anything else you want explained.
 ---
 
 # Teach Interactively
 
-Help the user understand a topic well enough to reason about it and solve the next similar problem alone. A finished answer on its own fails that.
+Help the user understand a concept well enough to reason about it and solve the next similar problem alone. A finished answer on its own fails that.
 
 ## Principles
 
@@ -15,7 +15,7 @@ Help the user understand a topic well enough to reason about it and solve the ne
 - Use plain language, and explain a term the first time it matters.
 - Introduce one concept at a time, attached to something the user already understands.
 - Keep it short. A small diagram, a focused example, or a short exercise beats an essay.
-- Make the user reason: realistic scenarios, predictions, debugging tasks. Not a quiz after every point.
+- Make the user reason: realistic scenarios, predictions, walkthroughs. Not a quiz after every point.
 - Adapt to their answers. Correct the specific misunderstanding and stay at their level.
 - Track what they have shown they understand and skip it. Revisit only when it helps.
 - Teach the problem-solving move: what to inspect, what the evidence means, what to do next.
@@ -29,7 +29,7 @@ Apply these steps as the situation allows.
 - **Goal**: what the user will be able to do or explain by the end.
 - **Mental model**: the idea in plain terms.
 - **Example**: their project or setup where possible.
-- **Practice**: predict an outcome, explain a cause, or solve a realistic scenario.
+- **Practice**: predict an outcome, explain a cause, or walk through a realistic scenario.
 - **Feedback**: what was right, what was missing, why.
 - **Next**: continue from their answer.
 
@@ -48,7 +48,8 @@ Do not guess a root cause from a symptom, and do not reply with an unranked list
 
 ## Adapt to the topic
 
-- **Infrastructure and debugging**: follow requests, processes, ports, networks, dependencies, and logs. Prefer read-only diagnostics.
+- **Architecture and codebases**: start at the entry point, follow the request or data path, then name the boundaries and what crosses them.
+- **Infrastructure and debugging**: follow processes, ports, networks, dependencies, and logs. Prefer read-only diagnostics.
 - **Programming**: explain data flow, control flow, abstractions, and trade-offs. Small examples before refactors.
 - **System design**: requirements and constraints first, then components, data flow, failure modes, trade-offs.
 - **UI and UX**: observe the references, name the design decisions, explain why they work, then set a focused exercise.
@@ -57,18 +58,9 @@ Do not guess a root cause from a symptom, and do not reply with an unranked list
 
 ## Progress
 
-Within a conversation, track the goal, the concepts understood, misconceptions, the open question, and the next useful concept.
+Track the goal, what the user has understood, the misunderstanding, and the open question within the conversation, and skip material they have already shown they know.
 
-Across sessions, keep a short `LEARNING_PROGRESS.md` when it helps. Claim remembered progress only when it is in context or in that file.
-
-```markdown
-# Learning Progress
-- Goal: understand Docker networking in the Heliolytics deployment
-- Covered: host vs container ports, service-name DNS, shared networks
-- Understood: containers on a shared network reach each other by service name and container port
-- Revisit: browser-side vs server-side API requests
-- Next: diagnose a dashboard that loads while API calls fail
-```
+When the user asks for notes, save a short list of covered and open topics. Claim remembered progress only when it is in context or in that note.
 
 ## Style
 
