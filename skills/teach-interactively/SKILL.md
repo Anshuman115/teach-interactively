@@ -1,6 +1,6 @@
 ---
 name: teach-interactively
-description: Use for lightweight question-and-answer teaching of a concept: your architecture, your repo, a library, or anything else you want explained.
+description: Use when the user wants a lightweight question-and-answer explanation of a concept: their architecture, their repo, a library, or anything else they ask about.
 ---
 
 # Teach Interactively
