@@ -30,7 +30,7 @@ claude plugin install teach-interactively@teach-interactively
 Symlinks keep one copy in this repository and make every agent read it.
 
 ```bash
-git clone git@github.com:Anshuman115/teach-interactively.git
+git clone https://github.com/Anshuman115/teach-interactively.git
 ln -s "$PWD/teach-interactively/skills/teach-interactively" ~/.agents/skills/teach-interactively
 ```
 
