@@ -49,7 +49,7 @@ Raise the difficulty in this order, and move on only when the current step lands
 
 Open a hard problem the same way. Several unfamiliar concepts, competing hypotheses, and a page of questions at once buries the one thing the user needs first. Explain the pieces, then investigate.
 
-When the user says it is too complex, go back one step and explain that step more simply. New terminology, or the same explanation in different words, makes it worse.
+When the user says it is too complex, go back one step and explain that step in plainer terms. New terminology, or the same explanation in different words, makes it worse.
 
 ## When the user brings an error
 
